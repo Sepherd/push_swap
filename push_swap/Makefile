@@ -6,7 +6,7 @@
 #    By: arecce <arecce@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 12:38:37 by arecce            #+#    #+#              #
-#    Updated: 2022/09/09 19:02:06 by arecce           ###   ########.fr        #
+#    Updated: 2022/09/13 16:43:52 by arecce           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Werror -Wextra -I.
 RM = rm -f
 LIBRARY = libft/libft.a
 
-SRCS = push_swap.c ft_utils.c
+SRCS = push_swap.c ft_utils.c ft_move.c
 
 OBJS = $(SRCS:.c=.o)
 

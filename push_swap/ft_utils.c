@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:21:27 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/09 22:25:47 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/13 18:40:11 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_isdigit(char **str)
 				j++;
 		else
 			return (0);
-		while (str[i][j])
+		while (str[i][j] != '\0')
 		{
 			if (ft_isdigit(str[i][j]))
 				j++;
@@ -37,7 +37,7 @@ int	check_isdigit(char **str)
 	return (1);
 }
 
-int	check_int(char **str, int *array)
+int	check_int(char **str, struct s_stack array)
 {
 	int			i;
 	int			j;
@@ -50,7 +50,10 @@ int	check_int(char **str, int *array)
 	{
 		temp = ft_atoi(str[j]);
 		if (temp >= INT_MIN && temp <= INT_MAX)
-			array[i] = temp;
+		{
+			array.stack[i] = temp;
+			/* ft_printf("%d\n", array.stack[i]); */
+		}
 		else
 			return (0);
 		i++;
@@ -61,22 +64,34 @@ int	check_int(char **str, int *array)
 
 int	check_duplicate(struct s_stack array)
 {
-	int	i;
 	int	j;
+	int	k;
 
-	i = 0;
-	j = i + 1;
-	/* array.size = sizeof(array.stack) / sizeof(array.stack[0]);
-	ft_printf("size uguale a %d\n", array.size); */
-	while (array.size--)
+	k = array.size;
+	while (--k)
 	{
-		if (array.stack[i] == array.stack[j])
-			return (0);
-		else
+		j = k - 1;
+		while (j >= 0)
 		{
-			i++;
-			j++;
+			if (array.stack[k] == array.stack[j])
+				return (0);
+			else
+				j--;
 		}
 	}
 	return (1);
+}
+
+void	print_stack(struct s_stack array)
+{
+	int	size;
+	int	i;
+
+	size = array.size;
+	i = 0;
+	while (size--)
+	{
+		ft_printf("%d\n", array.stack[i]);
+		i++;
+	}
 }
