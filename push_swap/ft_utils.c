@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:21:27 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/13 18:40:11 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/14 17:12:47 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,39 @@ int	check_duplicate(struct s_stack array)
 	return (1);
 }
 
+int	check_sorting(struct s_stack array)
+{
+	int	j;
+	int	k;
+
+	k = array.size;
+	while (--k)
+	{
+		j = k - 1;
+		while (j >= 0)
+		{
+			if (array.stack[k] > array.stack[j])
+				j--;
+			else
+				return (0);
+		}
+	}
+	return (1);
+}
+
 void	print_stack(struct s_stack array)
 {
 	int	size;
 	int	i;
 
-	size = array.size;
+	size = array.size - 1;
 	i = 0;
-	while (size--)
+	if (size > 1)
 	{
-		ft_printf("%d\n", array.stack[i]);
-		i++;
+		while (size--)
+		{
+			ft_printf("%d\n", array.stack[i]);
+			i++;
+		}
 	}
 }

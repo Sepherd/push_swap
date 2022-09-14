@@ -6,11 +6,25 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:36:43 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/13 19:39:29 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/14 17:35:00 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	push_swap(struct s_stack array)
+{
+	while (!check_sorting(array))
+	{
+		if (array.stack[0] > array.stack[1])
+			rotate(array, "ra\n");
+		else
+		{
+			swap(array, "sa\n");
+			rotate(array, "ra\n");
+		}
+	}
+}
 
 int	main(int ac, char **av)
 {
@@ -19,19 +33,14 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		exit(0);
-	stack_a.stack = malloc(sizeof(int) * (ac - 1));
+	stack_a.size = ac - 1;
+	stack_b.size = 0;
+	stack_a.stack = malloc(sizeof(int) * stack_a.size);
 	stack_b.stack = malloc(sizeof(int) * (ac - 1));
 	if (!stack_a.stack)
 		exit(0);
-	stack_a.size = ac - 1;
-	stack_b.size = ac - 1;
-	/* if (check_isdigit(av))
-		ft_printf("sono numeri\n");
-	if (check_int(av, stack_a))
-		ft_printf("sono interi\n");
-	if (check_duplicate(stack_a))
-		ft_printf("no doppioni\n"); */
-	if (check_isdigit(av) && check_int(av, stack_a) && check_duplicate(stack_a) && check_int(av, stack_b) && check_duplicate(stack_b))
+	if ((ac > 1) && check_isdigit(av) && check_int(av, stack_a)
+		&& check_duplicate(stack_a) && !check_sorting(stack_a))
 	{
 		if (ac == 2)
 			ft_printf("%d\n", stack_a.stack[0]);
@@ -42,12 +51,15 @@ int	main(int ac, char **av)
 		}
 		else
 		{
-			double_move(stack_a, stack_b, 2);
+			push_swap(stack_a);
 			print_stack(stack_a);
 		}
 	}
+	else if (check_sorting(stack_a))
+		print_stack(stack_a);
 	else
 		ft_printf("Error\n");
 	free(stack_a.stack);
+	free(stack_b.stack);
 	return (0);
 }

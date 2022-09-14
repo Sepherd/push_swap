@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/13 19:31:48 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/14 17:03:29 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ struct	s_stack
 int		check_isdigit(char **str);
 int		check_int(char **str, struct s_stack array);
 int		check_duplicate(struct s_stack array);
+int		check_sorting(struct s_stack array);
 void	swap(struct s_stack array, char *move);
 void	rotate(struct s_stack array, char *move);
 void	print_stack(struct s_stack array);
 void	reverse(struct s_stack array, char *move);
 void	double_move(struct s_stack first, struct s_stack second, int move);
+void	push(struct s_stack pusher, struct s_stack pushed, char *move);
+int		find_min(struct s_stack array);
 
 #endif

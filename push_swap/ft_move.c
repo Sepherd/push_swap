@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:43:18 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/13 19:39:39 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/14 15:57:35 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,17 @@ void	double_move(struct s_stack first, struct s_stack second, int move)
 	}
 }
 
-/* void	push(struct s_stack sender, struct s_stack taker)
+void	push(struct s_stack pusher, struct s_stack pushed, char *move)
 {
-	
-};
-) */
+	pushed.size += 1;
+	// ft_printf("pusher size e' %d\n", pushed.size);
+	pushed.stack = malloc(sizeof(int) * pushed.size);
+	if (pushed.size > 1)
+		reverse(pushed, "\0");
+	pushed.stack[0] = pusher.stack[0];
+	ft_printf("stackb[0] e' %d\n", pushed.stack[0]);
+	rotate(pusher, "\0");
+	pusher.size -= 1;
+	// pusher.stack = malloc(sizeof(int) * pusher.size);
+	ft_printf("%s\n", move);
+}
