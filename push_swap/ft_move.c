@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:40:42 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 10:51:44 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/20 18:38:28 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	swap(t_stack *array, char *move)
 		array->stack[0] = array->stack[1];
 		array->stack[1] = temp;
 	}
+	array->mosse += 1;
 	ft_printf("%s", move);
 }
 
@@ -40,6 +41,7 @@ void	rotate(t_stack *array, char *move)
 		i++;
 	}
 	array->stack[i] = temp;
+	array->mosse += 1;
 	ft_printf("%s", move);
 }
 
@@ -58,6 +60,7 @@ void	reverse(t_stack *array, char *move)
 		i--;
 	}
 	array->stack[i] = temp;
+	array->mosse += 1;
 	ft_printf("%s", move);
 }
 
@@ -86,12 +89,15 @@ void	double_move(t_stack *first, t_stack *second, int move)
 void	push(t_stack *pusher, t_stack *pushed, char *move)
 {
 	pushed->size += 1;
-	// ft_printf("pusher size e' %d\n", pushed->size);
 	if (pushed->size > 1)
+	{
 		reverse(pushed, "\0");
+		pushed->mosse -= 1;
+	}
 	pushed->stack[0] = pusher->stack[0];
 	rotate(pusher, "\0");
+	pusher->mosse -= 1;
 	pusher->size -= 1;
-	// pusher->stack = malloc(sizeof(int) * pusher->size);
+	pusher->mosse += 1;
 	ft_printf("%s", move);
 }

@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:21:27 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 12:24:44 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/20 18:42:00 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ int	check_int(char **str, t_stack *array)
 	{
 		temp = ft_atoi(str[j]);
 		if (temp >= INT_MIN && temp <= INT_MAX)
-		{
 			array->stack[i] = temp;
-			/* ft_printf("%d\n", array.stack[i]); */
-		}
 		else
 			return (0);
 		i++;

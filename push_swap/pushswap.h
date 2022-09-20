@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 15:42:49 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/20 18:16:40 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack
 	int	size;
 	int	pos_min;
 	int	pos_max;
+	int	mosse;
 }				t_stack;
 
 int		check_isdigit(char **str);

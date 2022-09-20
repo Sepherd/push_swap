@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:24:16 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 16:47:01 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/20 17:15:17 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	push_bigger(t_stack *array_a, t_stack *array_b)
 	int	len;
 
 	big = find_bigger(array_a);
-	len = array_a->size / 2;
 	while (array_a->stack[0] != big)
 	{
+		len = array_a->size / 2;
 		if (array_a->pos_min > len)
 			rotate(array_a, "ra\n");
 		else
