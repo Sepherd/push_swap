@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:21:27 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/14 17:12:47 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/20 12:24:44 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_isdigit(char **str)
 	return (1);
 }
 
-int	check_int(char **str, struct s_stack array)
+int	check_int(char **str, t_stack *array)
 {
 	int			i;
 	int			j;
@@ -51,7 +51,7 @@ int	check_int(char **str, struct s_stack array)
 		temp = ft_atoi(str[j]);
 		if (temp >= INT_MIN && temp <= INT_MAX)
 		{
-			array.stack[i] = temp;
+			array->stack[i] = temp;
 			/* ft_printf("%d\n", array.stack[i]); */
 		}
 		else
@@ -62,18 +62,18 @@ int	check_int(char **str, struct s_stack array)
 	return (1);
 }
 
-int	check_duplicate(struct s_stack array)
+int	check_duplicate(t_stack *array)
 {
 	int	j;
 	int	k;
 
-	k = array.size;
+	k = array->size;
 	while (--k)
 	{
 		j = k - 1;
 		while (j >= 0)
 		{
-			if (array.stack[k] == array.stack[j])
+			if (array->stack[k] == array->stack[j])
 				return (0);
 			else
 				j--;
@@ -82,39 +82,37 @@ int	check_duplicate(struct s_stack array)
 	return (1);
 }
 
-int	check_sorting(struct s_stack array)
+int	check_sorting(t_stack *array)
 {
 	int	j;
 	int	k;
 
-	k = array.size;
-	while (--k)
+	k = array->size - 1;
+	while (k > 0)
 	{
 		j = k - 1;
 		while (j >= 0)
 		{
-			if (array.stack[k] > array.stack[j])
+			if (array->stack[k] > array->stack[j])
 				j--;
 			else
 				return (0);
 		}
+		k--;
 	}
 	return (1);
 }
 
-void	print_stack(struct s_stack array)
+void	print_stack(t_stack *array)
 {
 	int	size;
 	int	i;
 
-	size = array.size - 1;
+	size = array->size - 1;
 	i = 0;
-	if (size > 1)
+	while (i <= size)
 	{
-		while (size--)
-		{
-			ft_printf("%d\n", array.stack[i]);
-			i++;
-		}
+		ft_printf("%d\n", array->stack[i]);
+		i++;
 	}
 }

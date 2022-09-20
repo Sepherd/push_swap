@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/14 17:03:29 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/20 15:42:49 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,33 @@
 
 # include "libft/libft.h"
 
-struct	s_stack
+typedef struct s_stack
 {
-	int		*stack;
-	size_t	size;
-};
+	int	*stack;
+	int	size;
+	int	pos_min;
+	int	pos_max;
+}				t_stack;
 
 int		check_isdigit(char **str);
-int		check_int(char **str, struct s_stack array);
-int		check_duplicate(struct s_stack array);
-int		check_sorting(struct s_stack array);
-void	swap(struct s_stack array, char *move);
-void	rotate(struct s_stack array, char *move);
-void	print_stack(struct s_stack array);
-void	reverse(struct s_stack array, char *move);
-void	double_move(struct s_stack first, struct s_stack second, int move);
-void	push(struct s_stack pusher, struct s_stack pushed, char *move);
-int		find_min(struct s_stack array);
+int		check_int(char **str, t_stack *array);
+int		check_duplicate(t_stack *array);
+int		check_sorting(t_stack *array);
+int		find_bigger(t_stack *array);
+int		find_little(t_stack *array);
+void	push_bigger(t_stack *array_a, t_stack *array_b);
+void	push_little(t_stack *array_a, t_stack *array_b);
+void	swap(t_stack *array, char *move);
+void	rotate(t_stack *array, char *move);
+void	print_stack(t_stack *array);
+void	reverse(t_stack *array, char *move);
+void	double_move(t_stack *first, t_stack *second, int move);
+void	push(t_stack *pusher, t_stack *pushed, char *move);
+int		find_min(t_stack *array);
+void	mini_sort(t_stack *array_a, t_stack *array_b);
+void	sort_three(t_stack *array);
+void	sort_five(t_stack *array_a, t_stack *array_b);
+void	sort_hundred(t_stack *array_a, t_stack *array_b);
+/* void	sort_hundred(t_stack *array_a, t_stack *array_b); */
 
 #endif
