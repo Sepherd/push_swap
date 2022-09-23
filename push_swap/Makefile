@@ -6,7 +6,7 @@
 #    By: arecce <arecce@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 12:38:37 by arecce            #+#    #+#              #
-#    Updated: 2022/09/13 16:43:52 by arecce           ###   ########.fr        #
+#    Updated: 2022/09/23 12:28:48 by arecce           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Wall -Werror -Wextra -I.
 RM = rm -f
 LIBRARY = libft/libft.a
 
-SRCS = push_swap.c ft_utils.c ft_move.c
+SRCS = push_swap.c ft_utils.c ft_move.c ft_mini_sorting.c \
+	ft_little_big.c ft_big_sorting.c
 
 OBJS = $(SRCS:.c=.o)
 

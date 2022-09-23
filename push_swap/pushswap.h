@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 18:16:40 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/23 17:47:29 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef struct s_stack
 	int	size;
 	int	pos_min;
 	int	pos_max;
+	int	value;
+	int	pos;
+	int	target_pos;
+	int	cost_a;
+	int	cost_b;
+	int	total_c;
 	int	mosse;
 }				t_stack;
 
@@ -52,5 +58,8 @@ void	sort_three(t_stack *array);
 void	sort_five(t_stack *array_a, t_stack *array_b);
 void	sort_hundred(t_stack *array_a, t_stack *array_b);
 /* void	sort_hundred(t_stack *array_a, t_stack *array_b); */
+int		target_position(int b, t_stack *a);
+void	big_sort(t_stack *array_a, t_stack *array_b);
+void	cost_calc(t_stack *array_a, t_stack *array_b);
 
 #endif

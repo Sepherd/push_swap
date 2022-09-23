@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:41:46 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 18:27:26 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/23 12:35:46 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	mini_sort(t_stack *array_a, t_stack *array_b)
 	else if (array_a->size == 5)
 		sort_five(array_a, array_b);
 	else
-		sort_hundred(array_a, array_b);
+		big_sort(array_a, array_b);
 }
 
 void	sort_three(t_stack *array)
@@ -60,7 +60,7 @@ void	sort_five(t_stack *array_a, t_stack *array_b)
 	print_stack(array_a);
 }
 
-void	sort_hundred(t_stack *array_a, t_stack *array_b)
+/* void	sort_hundred(t_stack *array_a, t_stack *array_b)
 {
 	while (array_a->size > 0)
 		push_little(array_a, array_b);
@@ -70,4 +70,4 @@ void	sort_hundred(t_stack *array_a, t_stack *array_b)
 	ft_printf("mosse a %d\n", array_a->mosse);
 	ft_printf("mosse b %d\n", array_b->mosse);
 	ft_printf("mosse totali %d\n", array_a->mosse + array_b->mosse);
-}
+} */
