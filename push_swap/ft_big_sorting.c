@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:28:20 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/23 17:47:57 by arecce           ###   ########.fr       */
+/*   Updated: 2022/09/26 18:04:36 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,20 @@ int	target_position(int b, t_stack *a)
 
 	if (b > a->stack[0] && b < a->stack[1])
 		target = 1;
-	else if (b > a->stack[0] && b < a->stack[a->size - 1])
-		target = a->size -1;
+	else if (b > a->stack[a->size - 1])
+		target = a->size - 1;
+	else if (b < a->stack[0])
+		target = 0;
+	else
+	{
+		k = 0;
+		while (k < a->size - 1)
+		{
+			while (b > a->stack[k])
+				k++;
+		}
+		target = k;
+	}
 	return (target);
 }
 
