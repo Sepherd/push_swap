@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:41:46 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/23 12:35:46 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/04 16:37:21 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,4 @@ void	sort_five(t_stack *array_a, t_stack *array_b)
 	push(array_b, array_a, "pa\n");
 	rotate(array_a, "ra\n");
 	push(array_b, array_a, "pa\n");
-	print_stack(array_a);
 }
-
-/* void	sort_hundred(t_stack *array_a, t_stack *array_b)
-{
-	while (array_a->size > 0)
-		push_little(array_a, array_b);
-	while (array_b->size > 0)
-		push(array_b, array_a, "pa\n");
-	// print_stack(array_a);
-	ft_printf("mosse a %d\n", array_a->mosse);
-	ft_printf("mosse b %d\n", array_b->mosse);
-	ft_printf("mosse totali %d\n", array_a->mosse + array_b->mosse);
-} */

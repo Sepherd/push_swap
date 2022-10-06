@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/23 17:47:29 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/06 18:21:40 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,19 @@ typedef struct s_stack
 	int	pos_min;
 	int	pos_max;
 	int	value;
+	int	index;
 	int	pos;
 	int	target_pos;
 	int	cost_a;
 	int	cost_b;
-	int	total_c;
 	int	mosse;
 }				t_stack;
 
+void	memory_manage(t_stack *arr_a, t_stack *arr_b, int ac);
+void	free_manage(t_stack *arr_a, t_stack *arr_b, \
+					t_stack *arr_c, t_stack *arr_d);
 int		check_isdigit(char **str);
-int		check_int(char **str, t_stack *array);
+int		check_int(char **str, t_stack *array, t_stack *ta);
 int		check_duplicate(t_stack *array);
 int		check_sorting(t_stack *array);
 int		find_bigger(t_stack *array);
@@ -52,14 +55,19 @@ void	print_stack(t_stack *array);
 void	reverse(t_stack *array, char *move);
 void	double_move(t_stack *first, t_stack *second, int move);
 void	push(t_stack *pusher, t_stack *pushed, char *move);
-int		find_min(t_stack *array);
 void	mini_sort(t_stack *array_a, t_stack *array_b);
 void	sort_three(t_stack *array);
 void	sort_five(t_stack *array_a, t_stack *array_b);
-void	sort_hundred(t_stack *array_a, t_stack *array_b);
-/* void	sort_hundred(t_stack *array_a, t_stack *array_b); */
-int		target_position(int b, t_stack *a);
-void	big_sort(t_stack *array_a, t_stack *array_b);
-void	cost_calc(t_stack *array_a, t_stack *array_b);
+void	sort_easy(t_stack *ta, t_stack *tb);
+void	push_bigger_easy(t_stack *ta, t_stack *tb);
+void	push_easy(t_stack *tb, t_stack *ta);
+void	get_index(t_stack *arr, t_stack *temp);
+void	get_target_index(t_stack *arr, t_stack *arr_b, t_stack *temp);
+void	get_pos(t_stack *arr);
+void	get_target_pos(t_stack *arr_a, t_stack *arr_b);
+void	get_all_pos(t_stack *arr_a, t_stack *arr_b, t_stack *temp, int i);
+void	cost_b_calc(t_stack *arr);
+void	cost_a_calc(t_stack *arr);
+void	cheap_cost(t_stack *arr_a, t_stack *arr_b, t_stack *temp);
 
 #endif

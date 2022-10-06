@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:36:43 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 18:12:37 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/05 14:37:44 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@ int	main(int ac, char **av)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
+	t_stack	temp_a;
+	t_stack	temp_b;
 
 	if (ac == 1 || ac == 2)
 		exit(0);
-	stack_a.size = ac - 1;
-	stack_b.size = 0;
-	stack_a.stack = (int *)malloc(sizeof(int) * stack_a.size);
-	stack_b.stack = (int *)malloc(sizeof(int) * (ac - 1));
+	memory_manage(&stack_a, &stack_b, ac);
+	memory_manage(&temp_b, &temp_a, ac);
 	if (!stack_a.stack || !stack_b.stack)
 		exit(0);
-	if ((ac > 2) && check_isdigit(av) && check_int(av, &stack_a)
+	if ((ac > 2) && check_isdigit(av) && check_int(av, &stack_a, &temp_b)
 		&& check_duplicate(&stack_a) && !check_sorting(&stack_a))
 	{
+		sort_easy(&temp_a, &temp_b);
 		if (ac == 3)
 			swap(&stack_a, "sa\n");
 		else
@@ -35,7 +36,8 @@ int	main(int ac, char **av)
 	}
 	else
 		ft_printf("Error\n");
-	free(stack_a.stack);
-	free(stack_b.stack);
+	free_manage(&stack_a, &stack_b, &temp_a, &temp_b);
 	return (0);
 }
+
+// leaks -atExit --
