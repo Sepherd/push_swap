@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/06 18:21:40 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/12 12:31:09 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print_stack(t_stack *array);
 void	reverse(t_stack *array, char *move);
 void	double_move(t_stack *first, t_stack *second, int move);
 void	push(t_stack *pusher, t_stack *pushed, char *move);
-void	mini_sort(t_stack *array_a, t_stack *array_b);
+void	mini_sort(t_stack *array_a, t_stack *array_b, t_stack *temp);
 void	sort_three(t_stack *array);
 void	sort_five(t_stack *array_a, t_stack *array_b);
 void	sort_easy(t_stack *ta, t_stack *tb);
@@ -64,10 +64,12 @@ void	push_easy(t_stack *tb, t_stack *ta);
 void	get_index(t_stack *arr, t_stack *temp);
 void	get_target_index(t_stack *arr, t_stack *arr_b, t_stack *temp);
 void	get_pos(t_stack *arr);
-void	get_target_pos(t_stack *arr_a, t_stack *arr_b);
-void	get_all_pos(t_stack *arr_a, t_stack *arr_b, t_stack *temp, int i);
+void	get_big_pos(t_stack *arr_a, t_stack *arr_b);
+void	get_all_pos(t_stack *arr_a, t_stack *arr_b, t_stack *temp);
 void	cost_b_calc(t_stack *arr);
-void	cost_a_calc(t_stack *arr);
+void	cost_a_calc(t_stack *arr, t_stack *arr_b);
 void	cheap_cost(t_stack *arr_a, t_stack *arr_b, t_stack *temp);
+void	big_sort(t_stack *a, t_stack *b, t_stack *t);
+void	empty_b_stack(t_stack *a, t_stack *b);
 
 #endif

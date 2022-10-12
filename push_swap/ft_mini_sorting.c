@@ -6,20 +6,20 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:41:46 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/04 16:37:21 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/10 15:25:26 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	mini_sort(t_stack *array_a, t_stack *array_b)
+void	mini_sort(t_stack *array_a, t_stack *array_b, t_stack *temp)
 {
 	if (array_a->size == 3)
 		sort_three(array_a);
 	else if (array_a->size == 5)
 		sort_five(array_a, array_b);
 	else
-		big_sort(array_a, array_b);
+		big_sort(array_a, array_b, temp);
 }
 
 void	sort_three(t_stack *array)

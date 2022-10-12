@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:34:51 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/05 14:17:32 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/12 15:35:14 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	push_bigger_easy(t_stack *ta, t_stack *tb)
 
 	big = find_bigger(tb);
 	while (tb->stack[0] != big)
-	{
 		rotate(tb, "\0");
-	}
 	push_easy(tb, ta);
 }
 
@@ -43,6 +41,5 @@ void	sort_easy(t_stack *ta, t_stack *tb)
 	{
 		push_bigger_easy(ta, tb);
 		i--;
-	}	
-	print_stack(ta);
+	}
 }
