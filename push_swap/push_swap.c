@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:36:43 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/13 12:44:06 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/13 17:11:45 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ int	main(int ac, char **av)
 			swap(&stack_a, "sa\n");
 		else
 			mini_sort(&stack_a, &stack_b, &temp_a);
-		/* if (check_sorting(&stack_a))
-			ft_printf("OK\n"); */
+		if (check_sorting(&stack_a))
+		{
+			ft_printf("OK\n");
+			ft_printf("mosse: %d\n", stack_b.mosse + stack_a.mosse);
+		}
 	}
 	else
 		ft_printf("Error\n");

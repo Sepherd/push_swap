@@ -6,55 +6,58 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:28:20 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/13 12:45:53 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:18:36 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	rot_or_rev_a(t_stack *a, t_stack *b)
+{
+	if (b->target_pos <= a->size / 2)
+		rotate(a, "ra\n");
+	else
+		reverse(a, "rra\n");
+}
+
+void	rot_or_rev_b(t_stack *b)
+{
+	if (b->pos <= b->size / 2)
+		rotate(b, "rb\n");
+	else
+		reverse(b, "rrb\n");
+}
+
+void	little_move(t_stack *a)
+{
+	if (a->pos_min <= a->size / 2)
+		rotate(a, "ra\n");
+	else
+		reverse(a, "rra\n");
+}
 
 void	empty_b_stack(t_stack *a, t_stack *b)
 {
 	if (b->value > find_bigger(a))
 	{
 		while (a->stack[0] != find_little(a))
-			rotate(a, "ra\n");
+			little_move(a);
 		while (b->stack[0] != b->value)
-		{
-			if (b->pos <= b->size / 2)
-				rotate(b, "rb\n");
-			else
-				reverse(b, "rrb\n");
-		}
+			rot_or_rev_b(b);
 		push(b, a, "pa\n");
 	}
-	else if (b->value > a->value && b->target_pos == 0
-		&& a->stack[a->size - 1] == a->value)
+	else if (b->value > a->value && a->stack[a->size - 1] == a->value)
 	{
 		while (b->stack[0] != b->value)
-		{
-			if (b->pos <= b->size / 2)
-				rotate(b, "rb\n");
-			else
-				reverse(b, "rrb\n");
-		}
+			rot_or_rev_b(b);
 		push(b, a, "pa\n");
 	}
 	else
 	{
 		while (a->stack[0] != a->value)
-		{
-			if (b->target_pos <= a->size / 2)
-				rotate(a, "ra\n");
-			else
-				reverse(a, "rra\n");
-		}
+			rot_or_rev_a(a, b);
 		while (b->stack[0] != b->value)
-		{
-			if (b->pos <= b->size / 2)
-				rotate(b, "rb\n");
-			else
-				reverse(b, "rrb\n");
-		}
+			rot_or_rev_b(b);
 		push(b, a, "pa\n");
 	}
 }
@@ -68,11 +71,15 @@ void	big_sort(t_stack *a, t_stack *b, t_stack *t)
 	{
 		cheap_cost(a, b, t);
 		get_all_pos(a, b, t);
+		/* print_stack(b);
+		print_stack(a); */
 		empty_b_stack(a, b);
 	}
 	while (a->stack[0] != find_little(a))
-		rotate(a, "ra\n");
-	/******STAMPA******/
-	/* ft_printf("stack a:\n");
-	print_stack(a); */
+	{
+		if (a->pos_min <= a->size / 2)
+			rotate(a, "ra\n");
+		else
+			reverse(a, "rra\n");
+	}
 }

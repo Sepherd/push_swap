@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/12 12:31:09 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/13 14:59:14 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ void	cost_b_calc(t_stack *arr);
 void	cost_a_calc(t_stack *arr, t_stack *arr_b);
 void	cheap_cost(t_stack *arr_a, t_stack *arr_b, t_stack *temp);
 void	big_sort(t_stack *a, t_stack *b, t_stack *t);
+void	rot_or_rev_a(t_stack *a, t_stack *b);
+void	rot_or_rev_b(t_stack *b);
+void	little_move(t_stack *a);
 void	empty_b_stack(t_stack *a, t_stack *b);
 
 #endif
