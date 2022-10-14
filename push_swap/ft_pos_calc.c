@@ -53,7 +53,6 @@ void	get_target_index(t_stack *arr_a, t_stack *arr_b, t_stack *temp)
 			i++;
 		}
 	}
-	// ft_printf("a value: %d\n", arr_a->value);
 }
 
 void	get_pos(t_stack *arr)
@@ -64,7 +63,6 @@ void	get_pos(t_stack *arr)
 	while (arr->stack[i] != arr->value)
 		i++;
 	arr->pos = i;
-	// ft_printf("b pos get_pos : %d\n", arr->pos);
 }
 
 void	get_big_pos(t_stack *arr_a, t_stack *arr_b)
