@@ -6,11 +6,11 @@
 #    By: arecce <arecce@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 12:38:37 by arecce            #+#    #+#              #
-#    Updated: 2022/10/06 12:41:06 by arecce           ###   ########.fr        #
+#    Updated: 2022/10/14 12:31:26 by arecce           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pushswap
+NAME = push_swap
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I.
@@ -19,7 +19,7 @@ LIBRARY = libft/libft.a
 
 SRCS = push_swap.c ft_checkers.c ft_move.c ft_mini_sorting.c \
 	ft_little_big.c ft_big_sorting.c ft_cost_calc.c ft_sort_temp.c \
-	ft_utils.c ft_pos_calc.c
+	ft_utils.c ft_pos_calc.c ft_save_moves.c
 
 OBJS = $(SRCS:.c=.o)
 

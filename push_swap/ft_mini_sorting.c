@@ -6,11 +6,11 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:41:46 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/10 15:25:26 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/14 12:32:41 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
 void	mini_sort(t_stack *array_a, t_stack *array_b, t_stack *temp)
 {

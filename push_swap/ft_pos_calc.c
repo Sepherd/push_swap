@@ -6,11 +6,11 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:40:51 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/12 14:38:24 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/15 12:33:19 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
 void	get_index(t_stack *arr, t_stack *temp)
 {

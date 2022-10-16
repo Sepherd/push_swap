@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_save_moves.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 14:24:27 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/14 12:32:41 by arecce           ###   ########.fr       */
+/*   Created: 2022/10/14 12:31:32 by arecce            #+#    #+#             */
+/*   Updated: 2022/10/16 15:13:23 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	memory_manage(t_stack *arr_a, t_stack *arr_b, int ac)
+void	save_move(t_stack *a, t_stack *b)
 {
-	arr_a->size = ac - 1;
-	arr_b->size = 0;
-	arr_a->stack = (int *)malloc(sizeof(int) * arr_a->size);
-	arr_b->stack = (int *)malloc(sizeof(int) * (ac - 1));
-}
-
-void	free_manage(t_stack *arr_a, t_stack *arr_b, \
-					t_stack *arr_c, t_stack *arr_d)
-{
-	free(arr_a->stack);
-	free(arr_b->stack);
-	free(arr_c->stack);
-	free(arr_d->stack);
+	if (b->target_pos < a->size / 2 && b->pos < b->size / 2)
+		while (a->stack[0] != a->value && b->stack[0] != b->value)
+			double_move(a, b, 2);
+	else if (b->target_pos > a->size / 2 && b->pos > b->size / 2)
+		while (a->stack[0] != a->value && b->stack[0] != b->value)
+			double_move(a, b, 3);
 }

@@ -6,11 +6,11 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:28:20 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/13 19:18:36 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/16 15:15:36 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
 void	rot_or_rev_a(t_stack *a, t_stack *b)
 {
@@ -38,7 +38,14 @@ void	little_move(t_stack *a)
 
 void	empty_b_stack(t_stack *a, t_stack *b)
 {
-	if (b->value > find_bigger(a))
+	if (b->value > a->value && b->value < find_bigger(a)
+		&& a->stack[a->size - 1] == a->value)
+	{
+		while (b->stack[0] != b->value)
+			rot_or_rev_b(b);
+		push(b, a, "pa\n");
+	}
+	else if (b->value > find_bigger(a))
 	{
 		while (a->stack[0] != find_little(a))
 			little_move(a);
@@ -46,14 +53,9 @@ void	empty_b_stack(t_stack *a, t_stack *b)
 			rot_or_rev_b(b);
 		push(b, a, "pa\n");
 	}
-	else if (b->value > a->value && a->stack[a->size - 1] == a->value)
-	{
-		while (b->stack[0] != b->value)
-			rot_or_rev_b(b);
-		push(b, a, "pa\n");
-	}
 	else
 	{
+		save_move(a, b);
 		while (a->stack[0] != a->value)
 			rot_or_rev_a(a, b);
 		while (b->stack[0] != b->value)
@@ -71,8 +73,6 @@ void	big_sort(t_stack *a, t_stack *b, t_stack *t)
 	{
 		cheap_cost(a, b, t);
 		get_all_pos(a, b, t);
-		/* print_stack(b);
-		print_stack(a); */
 		empty_b_stack(a, b);
 	}
 	while (a->stack[0] != find_little(a))

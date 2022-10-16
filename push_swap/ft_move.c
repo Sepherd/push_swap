@@ -6,11 +6,11 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:40:42 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 18:38:28 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/14 18:40:31 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
 void	swap(t_stack *array, char *move)
 {
@@ -77,13 +77,18 @@ void	double_move(t_stack *first, t_stack *second, int move)
 		rotate(first, "\0");
 		rotate(second, "\0");
 		ft_printf("rr\n");
+		first->mosse -= 1;
+		second->mosse -= 1;
 	}
 	if (move == 3)
 	{
 		reverse(first, "\0");
 		reverse(second, "\0");
 		ft_printf("rrr\n");
+		first->mosse -= 1;
+		second->mosse -= 1;
 	}
+	first->mosse += 1;
 }
 
 void	push(t_stack *pusher, t_stack *pushed, char *move)

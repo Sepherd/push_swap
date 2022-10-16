@@ -6,11 +6,11 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:21:27 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/13 14:39:17 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/14 12:32:41 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
 int	check_isdigit(char **str)
 {

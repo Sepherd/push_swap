@@ -6,11 +6,11 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:24:16 by arecce            #+#    #+#             */
-/*   Updated: 2022/09/20 17:15:17 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/14 12:32:41 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
 int	find_bigger(t_stack *array)
 {
