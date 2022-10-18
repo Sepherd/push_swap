@@ -6,63 +6,56 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:21:27 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/14 12:32:41 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/18 19:53:28 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_isdigit(char **str)
+int	check_isdigit(char ***str, int ac)
 {
 	int	i;
-	int	j;
+	int	len;
 
-	i = 1;
-	while (str[i])
+	i = 0;
+	len = 0;
+	while (i < ac - 1)
 	{
-		j = 0;
-		if (str[i][j] == '+' || str[i][j] == '-' || ft_isdigit(str[i][j]))
-				j++;
-		else
-			return (0);
-		while (str[i][j] != '\0')
-		{
-			if (ft_isdigit(str[i][j]))
-				j++;
-			else
-				return (0);
-		}
+		len += check_util(str, i);
 		i++;
 	}
-	return (1);
+	return (len);
 }
 
-int	check_int(char **str, t_stack *array, t_stack *ta)
+int	check_int(t_stack *a, t_stack *tb, int ac)
 {
 	int			i;
+	int			k;
 	int			j;
 	long long	temp;
 
 	temp = 0;
 	i = 0;
-	j = 1;
-	while (str[j])
+	k = 0;
+	while (k < ac - 1)
 	{
-		temp = ft_atoi(str[j]);
-		if (temp >= INT_MIN && temp <= INT_MAX)
+		j = 0;
+		while (a->arg[k][j])
 		{
-			array->stack[i] = temp;
-			ta->stack[i] = temp;
+			temp = ft_atoi(a->arg[k][j]);
+			if (temp >= INT_MIN && temp <= INT_MAX)
+				copy_int(a, tb, i, temp);
+			else
+				return (0);
+			i++;
+			j++;
 		}
-		else
-			return (0);
-		i++;
-		j++;
+		k++;
 	}
 	return (1);
 }
 
-int	check_duplicate(t_stack *array)
+int	check_dup(t_stack *array)
 {
 	int	j;
 	int	k;
@@ -82,7 +75,7 @@ int	check_duplicate(t_stack *array)
 	return (1);
 }
 
-int	check_sorting(t_stack *array)
+int	check_sort(t_stack *array)
 {
 	int	j;
 	int	k;
@@ -103,17 +96,8 @@ int	check_sorting(t_stack *array)
 	return (1);
 }
 
-void	print_stack(t_stack *array)
+void	copy_int(t_stack *a, t_stack *tb, int i, long long temp)
 {
-	int	size;
-	int	i;
-
-	size = array->size - 1;
-	i = 0;
-	while (i <= size)
-	{
-		ft_printf("%d ", array->stack[i]);
-		i++;
-	}
-	ft_printf("\n");
+	a->stack[i] = temp;
+	tb->stack[i] = temp;
 }

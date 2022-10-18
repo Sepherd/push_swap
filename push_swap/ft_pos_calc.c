@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:40:51 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/15 12:33:19 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/18 20:09:44 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ void	get_target_index(t_stack *arr_a, t_stack *arr_b, t_stack *temp)
 
 	i = arr_b->index + 1;
 	if (i > temp->size - 1)
-	{
-		arr_a->index = 0;
-		arr_a->pos = arr_a->size - 1;
-		arr_a->value = arr_a->stack[arr_a->size - 1];
-	}
+		target_index_helper(arr_a);
 	else
 	{
 		while (i < temp->size)
