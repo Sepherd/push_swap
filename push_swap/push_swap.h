@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/18 20:13:03 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/19 17:29:26 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	rot_or_rev_b(t_stack *b);
 void	little_move(t_stack *a);
 void	empty_b_stack(t_stack *a, t_stack *b);
 void	save_move(t_stack *a, t_stack *b);
+void	move_bigger(t_stack *a, t_stack *b);
 void	error_call(void);
 
 #endif

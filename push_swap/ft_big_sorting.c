@@ -47,6 +47,7 @@ void	empty_b_stack(t_stack *a, t_stack *b)
 	}
 	else if (b->value > find_bigger(a))
 	{
+		move_bigger(a, b);
 		while (a->stack[0] != find_little(a))
 			little_move(a);
 		while (b->stack[0] != b->value)

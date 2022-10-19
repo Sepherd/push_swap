@@ -6,37 +6,13 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:36:43 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/18 20:19:08 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/19 18:23:04 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* int	get_size(t_stack *a)
-{
-	int	i;
-
-	i = 0;
-	while (a->arg[i])
-		i++;
-	return (i);
-} */
-
-/* void	fill_array(t_stack *a, t_stack *tb)
-{
-	a->stack = (int *)malloc(sizeof(int) * get_size(a));
-	tb->stack = (int *)malloc(sizeof(int) * get_size(a));
-	a->size = get_size(a);
-	ft_printf("size: %d\n", get_size(a));
-	if (check_isdigit(a->arg) && check_int(a->arg, a, tb, 0) && check_dup(a)
-		&& !check_sort(a))
-		ft_printf("OK!\n");
-	else
-		ft_printf("KO!\n");
-	exit(0);
-} */
-
-void	print_stack(t_stack *array)
+/* void	print_stack(t_stack *array)
 {
 	int	size;
 	int	i;
@@ -49,7 +25,7 @@ void	print_stack(t_stack *array)
 		i++;
 	}
 	ft_printf("\n");
-}
+} */
 
 void	init(char **av, t_stack *a, int ac)
 {
@@ -79,12 +55,15 @@ int	main(int ac, char **av)
 		exit(0);
 	init(av, &sa, ac);
 	memory_manage(&sa, &sb, &ta, &tb);
-	if (check_int(&sa, &tb, ac) && check_dup(&sa) && !check_sort(&sa))
+	if (check_int(&sa, &tb, ac) && check_dup(&sa))
 	{
-		if (sa.size == 2)
-			swap(&sa, "sa\n");
-		else
-			select_sort(&sa, &sb, &ta, &tb);
+		if (!check_sort(&sa))
+		{
+			if (sa.size == 2)
+				swap(&sa, "sa\n");
+			else
+				select_sort(&sa, &sb, &ta, &tb);
+		}
 	}
 	else
 		error_call();
