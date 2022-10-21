@@ -5,49 +5,60 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arecce <arecce@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/09 18:56:36 by arecce            #+#    #+#              #
-#    Updated: 2022/09/09 16:48:13 by arecce           ###   ########.fr        #
+#    Created: 2022/09/08 12:38:37 by arecce            #+#    #+#              #
+#    Updated: 2022/10/19 18:33:33 by arecce           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = push_swap
 
-SRCS = ft_atoi.c ft_bzero.c ft_calloc.c \
-	ft_isalnum.c ft_isalpha.c ft_isascii.c \
-	ft_isdigit.c ft_isprint.c ft_memchr.c \
-	ft_memcmp.c ft_memcpy.c ft_memmove.c \
-	ft_memset.c ft_strchr.c ft_strdup.c \
-	ft_strlcat.c ft_strlcpy.c ft_strlen.c \
-	ft_strncmp.c ft_strnstr.c ft_strrchr.c \
-	ft_tolower.c ft_toupper.c ft_substr.c \
-	ft_strjoin.c ft_strtrim.c ft_split.c \
-	ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c \
-	ft_putnbr_fd.c ft_putendl_fd.c ft_strmapi.c \
-	ft_striteri.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
-	ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-	ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-	ft_printf_utils.c ft_printf.c ft_putchar.c ft_puthex.c \
-	ft_putnbr.c ft_putptr.c ft_putstr.c ft_putunbr.c
-	
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -I.
+
+LIBFT = libft/libft.a
+
+SRCS = push_swap.c ft_checkers.c ft_move.c ft_select_sort.c \
+	ft_little_big.c ft_big_sorting.c ft_cost_calc.c ft_sort_temp.c \
+	ft_utils.c ft_pos_calc.c ft_save_moves.c
+
+HEADER = push_swap.h
 
 OBJS = $(SRCS:.c=.o)
 
-CC = gcc
-RM = rm -f
-CFLAGS = -Wall -Werror -Wextra -I.
+GREEN = \033[1;32m
+RED = \033[1;31m
+BLU = \033[1;34m
+# YEL = \033[1;33m
+# WHT = \033[1;37m
+EOC = \033[1;0m
 
-all: $(NAME)
 
+${NAME}:
+		@echo "$(BLU)Compiling library...$(EOC)"
+		@${MAKE} -C libft
+		@echo "$(GREEN)Library done.$(EOC)"
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(LIBRARY)
-
+		@echo "$(BLU)Compiling push_swap...$(EOC)"
+		@$(CC) $(CFLAGS) -c $(SRCS) -I$(HEADER)
+		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+		@mkdir obj
+		@mv $(OBJS) ./obj
+		@echo "$(GREEN)Push_swap build completed.$(EOC)"
+		
+all: ${NAME}
 
 clean:
-		$(RM) $(OBJS)
+		@echo "$(RED)Removing .o files...$(EOC)"
+		@/bin/rm -f $(OBJ)
+		@/bin/rm -Rf obj
+		@${MAKE} -C libft clean
+		@echo "$(GREEN)Clean done.$(EOC)"
 
 fclean: clean
-		$(RM) $(NAME)
+		@echo "$(RED)Removing the latest files...$(EOC)"
+		@/bin/rm -f $(NAME)
+		@${MAKE} -C libft fclean
+		@echo "$(GREEN)Fclean done.$(EOC)"
 
 re: fclean all
 
