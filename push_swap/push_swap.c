@@ -6,42 +6,69 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:36:43 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/14 12:32:41 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/19 18:23:04 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* void	print_stack(t_stack *array)
+{
+	int	size;
+	int	i;
+
+	size = array->size - 1;
+	i = 0;
+	while (i <= size)
+	{
+		ft_printf("%d ", array->stack[i]);
+		i++;
+	}
+	ft_printf("\n");
+} */
+
+void	init(char **av, t_stack *a, int ac)
+{
+	int		i;
+	int		k;
+
+	i = 1;
+	k = 0;
+	a->arg = malloc(sizeof(char **) * ac - 1);
+	while (k < ac - 1)
+	{
+		a->arg[k] = ft_split(av[i], ' ');
+		i++;
+		k++;
+	}
+	a->size = check_isdigit(a->arg, ac);
+}
+
 int	main(int ac, char **av)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-	t_stack	temp_a;
-	t_stack	temp_b;
+	t_stack	sa;
+	t_stack	sb;
+	t_stack	ta;
+	t_stack	tb;
 
-	if (ac == 1 || ac == 2)
+	if (ac < 2)
 		exit(0);
-	memory_manage(&stack_a, &stack_b, ac);
-	memory_manage(&temp_b, &temp_a, ac);
-	if (!stack_a.stack || !stack_b.stack)
-		exit(0);
-	if ((ac > 2) && check_isdigit(av) && check_int(av, &stack_a, &temp_b)
-		&& check_duplicate(&stack_a) && !check_sorting(&stack_a))
+	init(av, &sa, ac);
+	memory_manage(&sa, &sb, &ta, &tb);
+	if (check_int(&sa, &tb, ac) && check_dup(&sa))
 	{
-		sort_easy(&temp_a, &temp_b);
-		if (ac == 3)
-			swap(&stack_a, "sa\n");
-		else
-			mini_sort(&stack_a, &stack_b, &temp_a);
-		if (check_sorting(&stack_a))
+		if (!check_sort(&sa))
 		{
-			ft_printf("OK\n");
-			ft_printf("mosse: %d\n", stack_b.mosse + stack_a.mosse);
+			if (sa.size == 2)
+				swap(&sa, "sa\n");
+			else
+				select_sort(&sa, &sb, &ta, &tb);
 		}
 	}
 	else
-		ft_printf("Error\n");
-	free_manage(&stack_a, &stack_b, &temp_a, &temp_b);
+		error_call();
+	free_arg(&sa, ac);
+	free_manage(&sa, &sb, &ta, &tb);
 	return (0);
 }
 

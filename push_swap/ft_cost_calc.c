@@ -6,11 +6,18 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 14:17:46 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/16 14:27:53 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/18 20:09:16 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	target_index_helper(t_stack *a)
+{
+	a->index = 0;
+	a->pos = a->size - 1;
+	a->value = a->stack[a->size - 1];
+}
 
 void	cost_b_calc(t_stack *arr)
 {
@@ -31,24 +38,6 @@ void	cost_a_calc(t_stack *arr_a, t_stack *arr_b)
 		arr_b->cost_a = (arr_b->target_pos - arr_a->size) * -1;
 }
 
-/* void	make_positive(int nb_a, int nb_b)
-{
-	if (nb_a < 0)
-		nb_a *= -1;
-	if (nb_b < 0)
-		nb_b *= -1;
-}
-
-void	cost_calc(t_stack *arr_a, t_stack *arr_b)
-{
-	arr_b->cost_b = arr_b->pos;
-	if (arr_b->pos > arr_b->size / 2)
-		arr_b->cost_b = (arr_b->size - arr_b->pos) * -1;
-	arr_b->cost_a = arr_b->target_pos;
-	if (arr_b->target_pos > arr_a->size / 2)
-		arr_b->cost_a = (arr_a->size - arr_b->target_pos) * -1;
-} */
-
 void	cheap_cost(t_stack *arr_a, t_stack *arr_b, t_stack *temp)
 {
 	int	i;
@@ -66,7 +55,6 @@ void	cheap_cost(t_stack *arr_a, t_stack *arr_b, t_stack *temp)
 		get_all_pos(arr_a, arr_b, temp);
 		cost_b_calc(arr_b);
 		cost_a_calc(arr_a, arr_b);
-		// make_positive(arr_b->cost_a, arr_b->cost_b);
 		t_cost = arr_b->cost_a + arr_b->cost_b;
 		if (t_cost < cheap)
 		{

@@ -40,8 +40,10 @@ all: $(NAME)
 
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(LIBRARY)
+	@ar rcs $(NAME) $(OBJS)
 
+$(OBJS): $(SRCS)
+		@$(CC) -c $(CFLAGS) $(SRCS) $^ 
 
 clean:
 		$(RM) $(OBJS)
