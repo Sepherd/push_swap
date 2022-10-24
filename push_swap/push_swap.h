@@ -6,7 +6,7 @@
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:38:47 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/19 17:29:26 by arecce           ###   ########.fr       */
+/*   Updated: 2022/10/24 18:41:52 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # ifndef INT_MIN
 #  define INT_MIN -2147483648
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
 # endif
 
 # include "libft/libft.h"
@@ -43,6 +47,7 @@ void	memory_manage(t_stack *arr_a, t_stack *arr_b, t_stack *ta, t_stack *tb);
 void	free_arg(t_stack *a, int ac);
 void	free_manage(t_stack *arr_a, t_stack *arr_b, \
 					t_stack *arr_c, t_stack *arr_d);
+void	init(char **av, t_stack *a, int ac);
 int		check_util(char ***str, int i);
 int		check_isdigit(char ***str, int ac);
 void	copy_int(t_stack *a, t_stack *tb, int i, long long temp);
