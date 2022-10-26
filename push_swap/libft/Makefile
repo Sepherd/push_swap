@@ -6,7 +6,7 @@
 #    By: arecce <arecce@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 18:56:36 by arecce            #+#    #+#              #
-#    Updated: 2022/09/09 16:48:13 by arecce           ###   ########.fr        #
+#    Updated: 2022/10/25 12:46:43 by arecce           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,14 +40,16 @@ all: $(NAME)
 
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(LIBRARY)
+	@ar rcs $(NAME) $(OBJS)
 
+$(OBJS): $(SRCS)
+		@$(CC) -c $(CFLAGS) $(SRCS) $^ 
 
 clean:
-		$(RM) $(OBJS)
+		@$(RM) $(OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 
 re: fclean all
 

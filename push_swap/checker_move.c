@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move.c                                          :+:      :+:    :+:   */
+/*   checker_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arecce <arecce@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 10:40:42 by arecce            #+#    #+#             */
-/*   Updated: 2022/10/25 12:38:34 by arecce           ###   ########.fr       */
+/*   Created: 2022/10/24 18:51:09 by arecce            #+#    #+#             */
+/*   Updated: 2022/10/25 12:35:43 by arecce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	swap(t_stack *array, char *move)
+void	c_swap(t_stack *array)
 {
 	int	temp;
 
@@ -22,10 +22,9 @@ void	swap(t_stack *array, char *move)
 		array->stack[0] = array->stack[1];
 		array->stack[1] = temp;
 	}
-	ft_printf("%s", move);
 }
 
-void	rotate(t_stack *array, char *move)
+void	c_rotate(t_stack *array)
 {
 	int	temp;
 	int	i;
@@ -40,10 +39,9 @@ void	rotate(t_stack *array, char *move)
 		i++;
 	}
 	array->stack[i] = temp;
-	ft_printf("%s", move);
 }
 
-void	reverse(t_stack *array, char *move)
+void	c_reverse(t_stack *array)
 {
 	int	temp;
 	int	i;
@@ -58,41 +56,36 @@ void	reverse(t_stack *array, char *move)
 		i--;
 	}
 	array->stack[i] = temp;
-	ft_printf("%s", move);
 }
 
-void	double_move(t_stack *first, t_stack *second, int move)
+void	c_double_move(t_stack *first, t_stack *second, int move)
 {
 	if (first->size > 1 && second->size > 1)
 	{
 		if (move == 1)
 		{
-			swap(first, "\0");
-			swap(second, "\0");
-			ft_printf("ss\n");
+			c_swap(first);
+			c_swap(second);
 		}
 		if (move == 2)
 		{
-			rotate(first, "\0");
-			rotate(second, "\0");
-			ft_printf("rr\n");
+			c_rotate(first);
+			c_rotate(second);
 		}
 		if (move == 3)
 		{
-			reverse(first, "\0");
-			reverse(second, "\0");
-			ft_printf("rrr\n");
+			c_reverse(first);
+			c_reverse(second);
 		}
 	}
 }
 
-void	push(t_stack *pusher, t_stack *pushed, char *move)
+void	c_push(t_stack *pusher, t_stack *pushed)
 {
 	pushed->size += 1;
 	if (pushed->size > 1)
-		reverse(pushed, "\0");
+		c_reverse(pushed);
 	pushed->stack[0] = pusher->stack[0];
-	rotate(pusher, "\0");
+	c_rotate(pusher);
 	pusher->size -= 1;
-	ft_printf("%s", move);
 }
